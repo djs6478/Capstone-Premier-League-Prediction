@@ -1,4 +1,4 @@
-# Column Names and Descriptions for King County Data Set
+# Column Names and Descriptions for Premier League Prediction Set
 * `Date` - The date of the game
 * `Round` - The Gameweek #
 * `isHome` - If Team is Home

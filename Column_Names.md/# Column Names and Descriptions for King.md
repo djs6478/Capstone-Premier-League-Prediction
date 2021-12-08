@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Column Names and Descriptions for Premier League Predicition set
+=======
+# Column Names and Descriptions for Premier League Prediction Set
+>>>>>>> fab7d219589dd86bcdf931508406fc43eea1bfb4
 * `Date` - The date of the game
 * `Round` - The Gameweek #
 * `isHome` - If Team is Home

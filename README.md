@@ -12,63 +12,51 @@ Through this project we'd like to with Draft Kings. They're one of the premier s
 
 ## Business and Data Understanding
 
-I gathered my data from SofaScore.com. The data was gathered from the years 2009 to 2019. The original data was in txt form. The first thing I did was convert the data into csv files. The original data itself contained 8 values. These were:
+I gathered my data from SofaScore.com. The data was gathered from the years 2009 to 2019. The original data was in txt form. The first thing I did was convert the raw data into csv files which is titled clean data. The data contains 8 columns. These were the date, weekday, HomeTeam, HomeScore, AwayScore, AwayTeam, Winner and Stadium.
+Second, using the cleaned data, I then created a dataset called team data which contains 27 unique values. 
+Here is a link for the column names and descriptions of this team dataset: https://github.com/djs6478/Capstone-Premier-League-Prediction/blob/main/team_data/%23%20Column%20Names%20and%20Descriptions%20for%20Premier%20League.md
+Third, using the cleaned data I created another dataset called table. The table data set has the final table(standings) for every year. This includes the wins, draws, and losses at home and away for every team. In the table dataset, I also include data for the Championship League. 
 
-1. Date
 
-2. Weekday
 
-3. HomeTeam
-
-4. HomeScore
-
-5. AwayScore
-
-6. AwayTeam
-
-7. Winner
-
-8. Stadium
-
-Using this cleaned data I then created Team Data which contains 27 unique values. 
 
 
 
 ## Modeling
 
-We iterated over several different types of models. For our initital train test split, we created a holdout set of 10% to test on once we came to a final model, then we did another train test split that was a 75/25 split. 
+First I created two simple models. The first model I created a poisson model based on home and away goals.This model uses home and away scoring to predict results.
+The second model I created used the attack strength and defence strength to find the expected goals by a poisson distribution.
+This model was inspired by a reference, the link to this reference can be found here: https://www.pinnacle.com/en/betting-articles/Soccer/how-to-calculate-poisson-distribution/MD62MLXUMKMXZ6A8. 
 
-For our first simple model, we chose a Decision Tree because with a Decision Tree we wouldn't have to scale any data. We concluded that our Decision Tree was overfit. It scored 100% accuracy on the training data and about 73% accuracy on the test data. 
+Second, I used a backwards elimination class to find the best model. To see where I learned to use backwards elimination, checkout these two links here: 
+1:https://www.analyticsvidhya.com/blog/2021/04/backward-feature-elimination-and-its-implementation/
+ 2:https://github.com/Sushil-Deore/Automated_ML/blob/df123e7905e78ef50a8ec56538e2c17e584c5048/Regression_Models/Regression.py
 
-We then tried a Random Forest Classifier, Logistic Regression, XGBoost, and a KNeighbors Classifier. We created a Pipeline so we could OneHotEncode the columns more rapidly. We also performed a Grid Search that allowed us to tune the hyperparameters to get a more accurate model. 
-
-Our final model was an XGBoost model that gave us the best results on precision without overfitting. 
+Third, I then built a PredictGoals class. This predicts a teams goals and a teams rivals goals, based on the poisson models I built. Then using the prediction for goals, a probability is calculated for each game. There is the probability to win, lose or draw. This prediction is done for every single team and every single game. Based on the probabilties, a random outcome is generated for each game. After every game has been simulated, a final table is created to show the seasons simulated results. 
 
 ## Evaluation
 
-The final XGBoost Model we came to was slightly overfit on the training data but performed well on our unseen holdout data. Out of 5438 wells that were classified as functional only 1180 of them were actually non functional.  A precision score of 78% means that we have a pretty low false positive rate. Test precision score is 4 points higher than our original simple decision tree model, but that model was severely overfit due to there being no max depth limit in that model. 
+To calculate the probability of a team's placement, I ran the simulation 200 times and collected the results. I gathered the percentage of times every team placed for each position in the table. The simulation I used was for the 2018-2019 season of the Premier League. I then compared these probabilities to the actual results of the 2018-2019 season. The 3 teams with the highest probability to win(Liverpool, Man City and Chelsea) all finished in the top 3. Out of the bottom 4 teams with the worst probabilities, 3 were in relegated. One big mistake in my model is that simulations over predicted that Burnley would almost always finish in last place. They finished 15th instead. 
 
 ## Conclusion
 
-We reccommend that Wells of Life use this model in conjuction with their own resources to identify faulty wells. Our model will still classify some non -functional wells as functional 20% of the time so further investigation will be needed at times.
+We reccommend that this model is only used for the table prediction gambling before the year starts. It's strength is that it is good at predicting the final table based on the performance of previous years. However it doesn't take into account short term factors that could impact the result of a specific game. So it would not be very useful in deciding the probability of the outcome of specific games. 
 
 ## Future Work
 
-We'd like to further engineer more features to give our model better data to make predictions off of. We'd also like to further tune hyperparameters to optimize our model's performance on unseen data. With more time we would like to input climate data into our model to see how climate may be affecting wells, as well. 
-
-Overall, we'd like to continuously gather more information on the wells in Tanzania to add to our data and improve our model.
+I would like to use much more data in my prediction. Currently the model only uses goals and goals conceded depending on if teams are home or away and uses the same data for the opposing team. It doesn't account for recent transfer signings that may improve a team. It doesn't account for injuries. There is a alot of data that affects games that isn't used in this model. 
 
 ## Presentation Link 
 
-[Presentation](https://github.com/djs6478/Well-Project/blob/main/presentation.pdf)
+[Presentation](https://github.com/djs6478/Capstone-Premier-League-Prediction/blob/main/Capstone%20Presentation.pdf)
 
 ## Repository Navigation
 
 ```
 ├── README.md                    <- The top-level README for reviewers of this project. 
-├── data                         <- Sourced externally and generated from code. 
-├── notebooks                    <- Folder containing Jen, Wayne, and Derek Jupyter Notebooks housing individual work for this project. 
-├── EDA                          <- Exploratory Data Analysis containing Jen, Wayne, and Derek EDA Jupyter Notebooks. 
+├── create Data                         <- Run this to create the data folders. 
+├── simple model                    <- Folder containing the 2 simple models used for the modeling.
+├── Modeling                          <- Where all the final models are created. 
 ├── .gitignore                   <- Plain text file where each line contains a pattern for files/directories to ignore.
-├── final_notebook.ipynb         <- Final Jupyter notebook for this project, containing a final XGBoost model that tested on the holdout set. 
+├── final_notebook.ipynb         <- Final Jupyter notebook for this project, containing the simulations. 
 └── presentation.pdf             <- PDF of the presentation slides for this project.                 

@@ -32,7 +32,7 @@ Second, I used a backwards elimination class to find the best model. To see wher
 1:https://www.analyticsvidhya.com/blog/2021/04/backward-feature-elimination-and-its-implementation/
  2:https://github.com/Sushil-Deore/Automated_ML/blob/df123e7905e78ef50a8ec56538e2c17e584c5048/Regression_Models/Regression.py
 
-Third, I then built a PredictGoals class. This predicts a teams goals and a teams rivals goals, based on the poisson models I built. Then using the prediction for goals, a probability is calculated for each game. There is the probability to win, lose or draw. This prediction is done for every single team and every single game. Based on the probabilties, a random outcome is generated for each game. After every game has been simulated, a final table is created to show the seasons simulated results. 
+Third, I then built a PredictGoals class. This predicts a team's goals and a team's rival's goals, based on the poisson models I built. Then using the prediction for goals, a probability is calculated for each game. There is the probability to win, lose or draw. This prediction is done for every single team and every single game. Based on the probabilties, a random outcome is generated for each game. After every game has been simulated, a final table is created to show the seasons simulated results. 
 
 ## Evaluation
 

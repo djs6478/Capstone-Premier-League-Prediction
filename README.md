@@ -2,7 +2,7 @@
 
 ## Overview
 
-The sport of soccer and sports gambling are growing in popularity. One of the most popular forms of soccer gambling is table prediction gambling. In table prediction gambling, people gamble on where they think teams will finish in the table at the end of the year. The Premier League is one of the most popular leagues in the world and is the league I will be using.
+The sport of soccer and sports gambling are growing in popularity. One of the most popular forms of soccer gambling is table prediction gambling. In table prediction gambling, people gamble on where they think teams will finish in the table at the end of the year. The Premier League is one of the most popular leagues in the world and is the league I will be using. Here is a link on the relationship between the Premier League and gambling:https://www.theguardian.com/sport/2020/jan/08/how-the-betting-industry-has-become-inextricably-linked-to-football
 
 I will create a simiulation model to predict the probablities of where teams will finish in the table. Using these probabilties, the stakeholder will be able to create their gambling odds. 
 

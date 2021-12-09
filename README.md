@@ -13,13 +13,9 @@ Through this project we'd like to with Draft Kings. They're one of the premier s
 ## Business and Data Understanding
 
 I gathered my data from SofaScore.com. The data was gathered from the years 2009 to 2019. The original data was in txt form. The first thing I did was convert the raw data into csv files which is titled clean data. The data contains 8 columns. These were the date, weekday, HomeTeam, HomeScore, AwayScore, AwayTeam, Winner and Stadium.
-Second, using the cleaned data, I then created a dataset called team data which contains 27 unique values. 
+Second, using the cleaned data, I then created a dataset called team data which contains 27 unique values. I also standardized the data as well.  
 Here is a link for the column names and descriptions of this team dataset: https://github.com/djs6478/Capstone-Premier-League-Prediction/blob/main/team_data/%23%20Column%20Names%20and%20Descriptions%20for%20Premier%20League.md
 Third, using the cleaned data I created another dataset called table. The table data set has the final table(standings) for every year. This includes the wins, draws, and losses at home and away for every team. In the table dataset, I also include data for the Championship League. 
-
-
-
-
 
 
 ## Modeling
